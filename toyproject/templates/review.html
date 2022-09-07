@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+
+
+    <title>OTL</title>
+
+    <style>
+        * {
+            font-family: 'Jua', sans-serif;
+        }
+        .mytitle {
+            background-color: wheat;
+
+            width: 100%;
+            height: 250px;
+
+            background-image: url("https://media.istockphoto.com/vectors/abstract-background-vector-illustration-vector-id955661100?k=20&m=955661100&s=612x612&w=0&h=06Q9eMBPcKmLylZt4edz_0fZhwW0li51IgsbYRt7FP8=");
+            background-position: center;
+            background-size: cover;
+        }
+
+        .mTitle {
+            color: white;
+
+            height: 150px;
+
+            margin: auto;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 60px;
+
+            text-shadow: 5px 5px 10px black;
+            text-decoration-line: underline;
+            text-decoration-style: dotted;
+            text-decoration-color: darkorange;
+        }
+
+        .mytitle > p {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+
+            text-shadow: 0px 0px 5px black;
+        }
+
+        .best {
+            width: 500px;
+            margin: 40px 0px 0px 1000px;
+            font-size: 13px;
+        }
+
+        .best > h6 {
+            text-shadow: 2px 2px 2px white;
+        }
+
+        .otl {
+            font-size: 40px;
+
+
+            width: 100%;
+            height: 250px;
+            padding: 50px;
+
+            background-color: #087f23;
+            background-position: center;
+            background-size: cover;
+
+            color: white;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .otlHighlight {
+            font-size: 70px;
+            color: #f9a825;
+        }
+
+        .mBtn {
+            width: 100%;
+            height: 70px;
+            padding: 5px;
+
+            display: flex;
+            justify-content: right;
+        }
+
+        .mBtn > button {
+            margin: 10px 10px;
+        }
+
+        .card-body {
+            margin: 40px 20px 0px auto;
+        }
+
+        #saveBtn {
+            margin: 0px 40px 0px auto;
+        }
+
+        .card, .input-group, .card-body {
+            margin: auto;
+        }
+
+        .comments {
+            padding-top: 10px;
+        }
+
+        .inComment {
+            padding-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none; /* 링크의 밑줄 제거 */
+            color: inherit; /* 링크의 색상 제거 */
+        }
+
+
+    </style>
+
+    <script>
+
+
+    </script>
+
+</head>
+<body>
+<div class="titleBackgroundColor">
+
+    <div class="mytitle">
+        <a href="/">
+            <h1 class="mTitle">독서로 마음 나누기</h1>
+        </a>
+        <p>현재기온:<span id="temp"> </span>℃</p>
+        <div class="best">
+            <h6>
+                <b>🏆월간 베스트셀러</b>
+            </h6>
+
+<!--            <table class="table table-hover">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th scope="col">#</th>-->
+<!--                    <th scope="col">도서명</th>-->
+<!--                    <th scope="col">작가</th>-->
+<!--                    <th scope="col">출판사</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr id="rank1">-->
+<!--                    <th scope="row">1</th>-->
+<!--                    <td>하얼빈</td>-->
+<!--                    <td>김훈</td>-->
+<!--                    <td>문학동네</td>-->
+<!--                </tr>-->
+<!--                <tr id="rank2">-->
+<!--                    <th scope="row">2</th>-->
+<!--                    <td>불편한 편의점 2</td>-->
+<!--                    <td>김호연</td>-->
+<!--                    <td>나무옆의자</td>-->
+<!--                </tr>-->
+<!--                <tr id="rank3">-->
+<!--                    <th scope="row">3</th>-->
+<!--                    <td>역행자 (10만부 기념 페이크 에디션)</td>-->
+<!--                    <td>자청</td>-->
+<!--                    <td>웅진지식하우스</td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+        </div>
+    </div>
+
+</div>
+
+<form action="/test" method="post">
+    <div class="mBtn">
+        <!--            <button type="button" class="btn btn-warning">자유게시판</button>-->
+        <button id="reviewBtn" onclick="reviewSubmit()" type="button" class="btn btn-primary">리뷰남기기</button>
+    </div>
+</form>
+
+<!--    <h2>is Yes? for {{title}}</h2>-->
+<!--    <h2>is Yes? for {{image}}</h2>-->
+
+<div class="all-cards">
+
+    <div class="inForm">
+        <form action="/review" method="post">
+            <div class="card mb-3" style="max-width: 1000px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{book[0]['image']}}" class="img-fluid rounded-start" alt="{{title}}" width="270px">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">영화 제목</span>
+                                <input type="text" name="title" class="form-control" value="{{book[0]['title']}}"
+                                       aria-label="Username" aria-describedby="basic-addon1" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+
+                                {% set s = book[0]['star'] | int %}
+                                <label class="input-group-text" for="inputGroupSelect01">별점</label>
+                                <select class="form-select" name="star" disabled>
+                                    <option value="1" {% if s == 1 %} selected="selected" {% endif %}>⭐</option>
+                                    <option value="2" {% if s == 2 %} selected="selected" {% endif %}>⭐⭐</option>
+                                    <option value="3" {% if s == 3 %} selected="selected" {% endif %}>⭐⭐⭐</option>
+                                    <option value="4" {% if s == 4 %} selected="selected" {% endif %}>⭐⭐⭐⭐</option>
+                                    <option value="5" {% if s == 5 %} selected="selected" {% endif %}>⭐⭐⭐⭐⭐</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group">
+                                                <textarea id="content" name="content" class="form-control"
+                                                          aria-label="With textarea" rows="8" cols="20" readonly>{{book[0]['content']}}</textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div> <!-- inForm end -->
+
+
+    <div class="input-group inComment" style="max-width: 1000px;">
+        <span class="input-group-text">댓글 남기기</span>
+        <textarea placeholder="최대 90글자까지 입력이 가능합니다." class="form-control" aria-label="With textarea"></textarea>
+        <button type="button" class="btn btn-dark">댓글 쓰기</button>
+    </div>
+
+    <div class="container card mb-3 comments" style="max-width: 1000px;">
+        <div class="row g-0 comment">
+            <div class="col-md-1">
+                <img src="http://spartacodingclub.shop/static/images/rtans/SpartaIcon10.png"
+                     class="img-fluid rounded-start rtanImg" alt="..." width="300px">
+            </div>
+            <div class="col-md-11">
+                <div class="card-body">
+                    <h5 class="card-title">르탄(익명)</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+    </div> <!-- 첫 번째 코멘트 -->
+
+    <div class="container card mb-3 comments" style="max-width: 1000px;">
+        <div class="row g-0 comment">
+            <div class="col-md-1">
+                <img src="http://spartacodingclub.shop/static/images/rtans/SpartaIcon11.png"
+                     class="img-fluid rounded-start rtanImg" alt="..." width="300px">
+            </div>
+            <div class="col-md-11">
+                <div class="card-body">
+                    <h5 class="card-title">르탄(익명)</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+    </div> <!-- 첫 번째 코멘트 -->
+
+
+    <div class="container card mb-3 comments" style="max-width: 1000px;">
+        <div class="row g-0 comment">
+            <div class="col-md-1">
+                <img src="http://spartacodingclub.shop/static/images/rtans/SpartaIcon09.png"
+                     class="img-fluid rounded-start rtanImg" alt="..." width="300px">
+            </div>
+            <div class="col-md-11">
+                <div class="card-body">
+                    <h5 class="card-title">르탄(익명)</h5>
+                    <textarea id="commentContent" name="content" class="form-control"
+                              aria-label="With textarea" rows="2" cols="10"></textarea>
+                </div>
+            </div>
+        </div>
+    </div> <!-- 두 번째 코멘트 -->
+
+    <div class="container card mb-3 comments" style="max-width: 1000px;">
+        <div class="row g-0 comment">
+            <div class="col-md-1">
+                <img src="http://spartacodingclub.shop/static/images/rtans/SpartaIcon12.png"
+                     class="img-fluid rounded-start rtanImg" alt="..." width="300px">
+            </div>
+            <div class="col-md-11">
+                <div class="card-body">
+                    <h5 class="card-title">르탄(익명)</h5>
+                    <textarea id="commentContent" name="content" class="form-control"
+                              aria-label="With textarea" rows="2" cols="10"></textarea>
+                </div>
+            </div>
+        </div>
+    </div> <!-- 두 번째 코멘트 -->
+
+</div> <!-- all-cards end -->
+
+
+</body>
+</html>
