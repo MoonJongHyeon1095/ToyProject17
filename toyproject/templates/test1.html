@@ -82,25 +82,14 @@
                 </tr>
                 </thead>
                 <tbody>
+                {% for rank in ranks %}
                 <tr id="rank1">
-                    <th scope="row">1</th>
-                    <td>하얼빈</td>
-                    <td>김훈</td>
-                    <td>문학동네</td>
+                    <th scope="row">{{rank['rank']}}</th>
+                    <td>{{rank['title']}}</td>
+                    <td>{{rank['writer']}}</td>
+                    <td>{{rank['publisher']}}</td>
                 </tr>
-                <tr id="rank2">
-                    <th scope="row">2</th>
-                    <td>불편한 편의점 2</td>
-                    <td>김호연</td>
-                    <td>나무옆의자</td>
-                </tr>
-                <tr id="rank3">
-                    <th scope="row">3</th>
-                    <td>역행자 (10만부 기념 페이크 에디션)</td>
-                    <td>자청</td>
-                    <td>웅진지식하우스</td>
-                </tr>
-                </tbody>
+                {% endfor %}
             </table>
         </div>
     </div>
