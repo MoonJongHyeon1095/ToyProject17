@@ -19,6 +19,16 @@
         * {
             font-family: 'Jua', sans-serif;
         }
+
+        a {
+            text-decoration:none; !important;
+            color: inherit; !important;
+        }
+
+        a:hover {
+            color: inherit;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.50);
+        }
     </style>
     <script>
         function reviewSubmit() {
@@ -118,22 +128,23 @@
                 <div class="card h-100">
                     <a href="/{{book['bnum']}}">
                         <img src="{{book['image']}}" class="card-img-top" height="350px">
+                        <div class="card-body">
+                                <h5 class="card-title">{{book['title']}}</h5>
+                            {% for i in range(s) %}
+                                <span>⭐</span>
+                            {% endfor %}
+
+                            <hr>
+
+                            <p class="card-text">{{book['review']}}</p>
+                        </div>
                     </a>
-                    <div class="card-body">
-                        <a href="/{{book['bnum']}}">
-                            <h5 class="card-title">{{book['title']}}</h5>
-                        </a>
-                        {% for i in range(s) %}
-                            <span>⭐</span>
-                        {% endfor %}
-
-                        <hr>
-
-                        <p class="card-text">{{book['content']}}</p>
-                    </div>
                 </div>
             </div>
             {% endfor %}
+
+        </div>
+    </div>
 
 
 </body>
