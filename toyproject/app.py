@@ -5,7 +5,7 @@ from pymongo import MongoClient
 import certifi
 ca = certifi.where()
 
-client = MongoClient('mongodb+srv://test:sparta@cluster0.j6ve73r.mongodb.net/Cluster0?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://test:sparta@cluster0.fopdzyo.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
 
 app = Flask(__name__)
@@ -58,7 +58,7 @@ def home():
 
     print(books)
     # return jsonify({'books':books})
-    return render_template('test1.html', books=books, ranks=last_rank)
+    return render_template('index.html', books=books, ranks=last_rank)
 
 
 
