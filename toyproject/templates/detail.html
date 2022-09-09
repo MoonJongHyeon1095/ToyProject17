@@ -27,19 +27,19 @@
             background-color: wheat;
 
             width: 100%;
-            height: 250px;
+            height: 350px;
 
             background-image: url("https://media.istockphoto.com/vectors/abstract-background-vector-illustration-vector-id955661100?k=20&m=955661100&s=612x612&w=0&h=06Q9eMBPcKmLylZt4edz_0fZhwW0li51IgsbYRt7FP8=");
             background-position: center;
             background-size: cover;
         }
 
+
         .mTitle {
             color: white;
 
             height: 150px;
 
-            margin: auto;
 
             display: flex;
             flex-direction: column;
@@ -54,21 +54,10 @@
             text-decoration-color: darkorange;
         }
 
-        .mytitle > p {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-
-            color: white;
-
-            text-shadow: 0px 0px 5px black;
-        }
-
         .best {
             width: 500px;
 
-            margin: 40px 0px 0px 1000px;
+            margin: 0px 30px 0px auto;
 
             font-size: 13px;
         }
@@ -161,44 +150,32 @@
             <h6>
                 <b>🏆월간 베스트셀러</b>
             </h6>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">도서명</th>
+                    <th scope="col">작가</th>
+                    <th scope="col">출판사</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for rank in ranks %}
+                <tr id="rank1">
+                    <th scope="row">{{rank['rank']}}</th>
+                    <td>{{rank['title']}}</td>
+                    <td>{{rank['writer']}}</td>
+                    <td>{{rank['publisher']}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
-<!--            <table class="table table-hover">-->
-<!--                <thead>-->
-<!--                <tr>-->
-<!--                    <th scope="col">#</th>-->
-<!--                    <th scope="col">도서명</th>-->
-<!--                    <th scope="col">작가</th>-->
-<!--                    <th scope="col">출판사</th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-<!--                <tr id="rank1">-->
-<!--                    <th scope="row">1</th>-->
-<!--                    <td>하얼빈</td>-->
-<!--                    <td>김훈</td>-->
-<!--                    <td>문학동네</td>-->
-<!--                </tr>-->
-<!--                <tr id="rank2">-->
-<!--                    <th scope="row">2</th>-->
-<!--                    <td>불편한 편의점 2</td>-->
-<!--                    <td>김호연</td>-->
-<!--                    <td>나무옆의자</td>-->
-<!--                </tr>-->
-<!--                <tr id="rank3">-->
-<!--                    <th scope="row">3</th>-->
-<!--                    <td>역행자 (10만부 기념 페이크 에디션)</td>-->
-<!--                    <td>자청</td>-->
-<!--                    <td>웅진지식하우스</td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
-<!--            </table>-->
         </div>
     </div>
 
 </div>
 
-<!--    <h2>is Yes? for {{title}}</h2>-->
-<!--    <h2>is Yes? for {{image}}</h2>-->
 
 <div class="all-cards">
 
@@ -246,76 +223,6 @@
     </div> <!-- inForm end -->
 
 
-<!--    <div class="input-group inComment" style="max-width: 1000px;">-->
-<!--        <span class="input-group-text">댓글 남기기</span>-->
-<!--        <textarea placeholder="최대 90글자까지 입력이 가능합니다." class="form-control" aria-label="With textarea"></textarea>-->
-<!--        <button type="button" class="btn btn-dark">댓글 쓰기</button>-->
-<!--    </div>-->
-
-<!--    <div class="container card mb-3 comments" style="max-width: 1000px;">-->
-<!--        <div class="row g-0 comment">-->
-<!--            <div class="col-md-1">-->
-<!--                <img src="http://spartacodingclub.shop/static/images/rtans/SpartaIcon10.png"-->
-<!--                     class="img-fluid rounded-start rtanImg" alt="..." width="300px">-->
-<!--            </div>-->
-<!--            <div class="col-md-11">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">르탄(익명)</h5>-->
-<!--                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to-->
-<!--                        additional content. This content is a little bit longer.</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div> &lt;!&ndash; 첫 번째 코멘트 &ndash;&gt;-->
-
-<!--    <div class="container card mb-3 comments" style="max-width: 1000px;">-->
-<!--        <div class="row g-0 comment">-->
-<!--            <div class="col-md-1">-->
-<!--                <img src="http://spartacodingclub.shop/static/images/rtans/SpartaIcon11.png"-->
-<!--                     class="img-fluid rounded-start rtanImg" alt="..." width="300px">-->
-<!--            </div>-->
-<!--            <div class="col-md-11">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">르탄(익명)</h5>-->
-<!--                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to-->
-<!--                        additional content. This content is a little bit longer.</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div> &lt;!&ndash; 첫 번째 코멘트 &ndash;&gt;-->
-
-
-<!--    <div class="container card mb-3 comments" style="max-width: 1000px;">-->
-<!--        <div class="row g-0 comment">-->
-<!--            <div class="col-md-1">-->
-<!--                <img src="http://spartacodingclub.shop/static/images/rtans/SpartaIcon09.png"-->
-<!--                     class="img-fluid rounded-start rtanImg" alt="..." width="300px">-->
-<!--            </div>-->
-<!--            <div class="col-md-11">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">르탄(익명)</h5>-->
-<!--                    <textarea id="commentContent" name="content" class="form-control"-->
-<!--                              aria-label="With textarea" rows="2" cols="10"></textarea>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div> &lt;!&ndash; 두 번째 코멘트 &ndash;&gt;-->
-
-<!--    <div class="container card mb-3 comments" style="max-width: 1000px;">-->
-<!--        <div class="row g-0 comment">-->
-<!--            <div class="col-md-1">-->
-<!--                <img src="http://spartacodingclub.shop/static/images/rtans/SpartaIcon12.png"-->
-<!--                     class="img-fluid rounded-start rtanImg" alt="..." width="300px">-->
-<!--            </div>-->
-<!--            <div class="col-md-11">-->
-<!--                <div class="card-body">-->
-<!--                    <h5 class="card-title">르탄(익명)</h5>-->
-<!--                    <textarea id="commentContent" name="content" class="form-control"-->
-<!--                              aria-label="With textarea" rows="2" cols="10"></textarea>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div> &lt;!&ndash; 두 번째 코멘트 &ndash;&gt;-->
 
 </div> <!-- all-cards end -->
 

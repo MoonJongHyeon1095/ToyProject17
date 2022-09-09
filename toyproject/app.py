@@ -82,13 +82,16 @@ def book_get():
     image = soup.select_one(
         '#__next > div > div.bookCatalog_book_container__b3htO > div.bookCatalog_inner_container__JUfKQ > div.bookCatalog_book_catalog__yiiIc > div.bookCatalog_book_info_top__SUILS > div.bookImage_book_image__myUU5 > div.bookImage_img_area__kiGb6 > div > img')['src']
 
+    last_rank = list(db.bookrank.find({}, {'_id': False}))
+
+
     # print(title)
     # print('-----------')
     # print(image)
 
     # print(title, image)
     # return jsonify({'url':url, 'title':title, 'image':image})
-    return render_template('detail.html', title=title, image=image)
+    return render_template('detail.html', title=title, image=image, ranks=last_rank)
 
 
 
