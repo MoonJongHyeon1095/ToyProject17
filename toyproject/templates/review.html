@@ -8,13 +8,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR&display=swap"
+          rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-
 
 
     <title>OTL</title>
@@ -23,6 +23,7 @@
         * {
             font-family: 'Jua', sans-serif;
         }
+
         .mytitle {
             background-color: wheat;
 
@@ -147,52 +148,15 @@
     </script>
 
 </head>
+
 <body>
 <div class="titleBackgroundColor">
-
     <div class="mytitle">
         <a href="/">
             <h1 class="mTitle">독서로 마음 나누기</h1>
         </a>
-        <p>현재기온:<span id="temp"> </span>℃</p>
-        <div class="best">
-            <h6>
-                <b>🏆월간 베스트셀러</b>
-            </h6>
 
-<!--            <table class="table table-hover">-->
-<!--                <thead>-->
-<!--                <tr>-->
-<!--                    <th scope="col">#</th>-->
-<!--                    <th scope="col">도서명</th>-->
-<!--                    <th scope="col">작가</th>-->
-<!--                    <th scope="col">출판사</th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-<!--                <tr id="rank1">-->
-<!--                    <th scope="row">1</th>-->
-<!--                    <td>하얼빈</td>-->
-<!--                    <td>김훈</td>-->
-<!--                    <td>문학동네</td>-->
-<!--                </tr>-->
-<!--                <tr id="rank2">-->
-<!--                    <th scope="row">2</th>-->
-<!--                    <td>불편한 편의점 2</td>-->
-<!--                    <td>김호연</td>-->
-<!--                    <td>나무옆의자</td>-->
-<!--                </tr>-->
-<!--                <tr id="rank3">-->
-<!--                    <th scope="row">3</th>-->
-<!--                    <td>역행자 (10만부 기념 페이크 에디션)</td>-->
-<!--                    <td>자청</td>-->
-<!--                    <td>웅진지식하우스</td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
-<!--            </table>-->
-        </div>
     </div>
-
 </div>
 
 <form action="/test" method="post">
@@ -212,18 +176,19 @@
             <div class="card mb-3" style="max-width: 1000px;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="{{book[0]['image']}}" class="img-fluid rounded-start" alt="{{title}}" width="270px">
+                        <img src="{{ reviewing_book[0]['image'] }}" class="img-fluid rounded-start" alt="{{ title }}"
+                             width="270px">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">영화 제목</span>
-                                <input type="text" name="title" class="form-control" value="{{book[0]['title']}}"
+                                <span class="input-group-text" id="basic-addon1">책 제목</span>
+                                <input type="text" name="title" class="form-control" value="{{ reviewing_book[0]['title'] }}"
                                        aria-label="Username" aria-describedby="basic-addon1" readonly>
                             </div>
                             <div class="input-group mb-3">
 
-                                {% set s = book[0]['star'] | int %}
+                                {% set s = reviewing_book[0]['star'] | int %}
                                 <label class="input-group-text" for="inputGroupSelect01">별점</label>
                                 <select class="form-select" name="star" disabled>
                                     <option value="1" {% if s == 1 %} selected="selected" {% endif %}>⭐</option>
@@ -236,7 +201,8 @@
 
                             <div class="input-group">
                                                 <textarea id="content" name="content" class="form-control"
-                                                          aria-label="With textarea" rows="8" cols="20" readonly>{{book[0]['content']}}</textarea>
+                                                          aria-label="With textarea" rows="8" cols="20"
+                                                          readonly>{{ reviewing_book[0]['content'] }}</textarea>
                             </div>
                         </div>
 

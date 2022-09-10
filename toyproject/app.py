@@ -48,22 +48,22 @@ def book_get():
 
 @app.route("/review", methods=["POST"])
 def book_post():
-    image = request.form['image']
-    title = request.form['title']
-    star = request.form['star']
-    content = request.form['content']
+    image_receive = request.form['image']
+    title_receive = request.form['title']
+    star_receive = request.form['star']
+    content_receive = request.form['content']
 
-    print(title, star, content)
+    print(title_receive, star_receive, content_receive)
 
     # len + 1을 하면 안된다. 만약 데이터를 삭제한 경우라면?
-    num = (len(list(db.books.find({}, {'_id': False})))) + 1
+    num_receive = (len(list(db.books.find({}, {'_id': False})))) + 1
 
     doc = {
-        'bnum': num,
-        'image': image,
-        'title': title,
-        'star': star,
-        'content': content
+        'bnum': num_receive,
+        'image': image_receive,
+        'title': title_receive,
+        'star': star_receive,
+        'content': content_receive
     }
 
     db.books.insert_one(doc);
@@ -74,16 +74,16 @@ def book_post():
 
 # localhost:5000/1
 
-@app.route('/<int:num>', methods=["GET"])
-def book_read(num):
-    # print(type(num))
-    book = list(db.books.find(
-        {'bnum': num},
+@app.route('/<int:param>', methods=["GET"])
+def book_read(param):
+   # print(type(param))
+    reviewed_book = list(db.books.find(
+        {'bnum': param},
         {'_id': False}
     ))
-    print(num, book)
+    print(param, reviewed_book)
     # return jsonify({'book': book})
-    return render_template('review.html', book=book)
+    return render_template('review.html', reviewing_book=reviewed_book)
 
 
 if __name__ == '__main__':
