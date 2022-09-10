@@ -139,7 +139,7 @@
         }
 
         function copyBookUrl() {
-            var url = document.getElementById('copyUrl');
+            const url = document.getElementById('copyUrl');
             url.style.display='block';	        // 숨겨둔 input 태그 block처리
             url.select();	                    // 복사할 text 블럭
             document.execCommand('copy');	    // 드레그된 text 클립보드에 복사

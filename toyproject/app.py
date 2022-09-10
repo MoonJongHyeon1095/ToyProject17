@@ -2,11 +2,13 @@ from flask import Flask, render_template, request, jsonify, redirect
 import requests
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
-
-client = MongoClient('mongodb+srv://test:sparta@cluster0.j6ve73r.mongodb.net/Cluster0?retryWrites=true&w=majority')
+import certifi
+ca = certifi.where()
+client = MongoClient('mongodb+srv://test:sparta@cluster0.j6ve73r.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def home():
@@ -32,7 +34,8 @@ def book_get():
     title = soup.select_one(
         '#__next > div > div.bookCatalog_book_container__b3htO > div.bookCatalog_inner_container__JUfKQ > div.bookCatalog_book_catalog__yiiIc > div.bookCatalog_book_info_top__SUILS > div.bookSummary_book_summary__NsCmt > div.bookTitle_book_title__e3mof > div.bookTitle_title_area__fspvB > h2').text
     image = soup.select_one(
-        '#__next > div > div.bookCatalog_book_container__b3htO > div.bookCatalog_inner_container__JUfKQ > div.bookCatalog_book_catalog__yiiIc > div.bookCatalog_book_info_top__SUILS > div.bookImage_book_image__myUU5 > div.bookImage_img_area__kiGb6 > div > img')['src']
+        '#__next > div > div.bookCatalog_book_container__b3htO > div.bookCatalog_inner_container__JUfKQ > div.bookCatalog_book_catalog__yiiIc > div.bookCatalog_book_info_top__SUILS > div.bookImage_book_image__myUU5 > div.bookImage_img_area__kiGb6 > div > img')[
+        'src']
 
     # print(title)
     # print('-----------')
@@ -41,6 +44,7 @@ def book_get():
     # print(title, image)
     # return jsonify({'url':url, 'title':title, 'image':image})
     return render_template('detail.html', title=title, image=image)
+
 
 @app.route("/review", methods=["POST"])
 def book_post():
@@ -67,13 +71,14 @@ def book_post():
     return redirect('/');
     # return render_template('index.html')
 
+
 # localhost:5000/1
 
 @app.route('/<int:num>', methods=["GET"])
 def book_read(num):
     # print(type(num))
     book = list(db.books.find(
-        {'bnum':num},
+        {'bnum': num},
         {'_id': False}
     ))
     print(num, book)
@@ -83,4 +88,3 @@ def book_read(num):
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
-
