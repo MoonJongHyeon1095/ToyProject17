@@ -56,6 +56,17 @@
             url.style.display = 'none';	        // 다시 숨기기
         }
 
+        function deleteBook() {
+            $.ajax({
+                type: "DELETE",
+                url: "/<int:param>",
+                data: {},
+                success: function (response) {
+                    alert(response['msg'])
+                    window.location.replace('/')
+                }
+            });
+        }
 
 
     </script>
