@@ -85,7 +85,7 @@ def book_read(param):
     # return jsonify({'book': book})
     return render_template('review.html', reviewing_book=reviewed_book)
 
-@app.route('/<int:param>', methods=["DELETE"])
+@app.route('/review', methods=["DELETE"])
 def book_delete(param):
     db.users.delete_one({'bnum':param})
     return jsonify({'msg':'삭제되었습니다.'})

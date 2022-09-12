@@ -34,14 +34,14 @@
         }
 
         function urlChk(url) {
-            let chkUrl = 'https://search.shopping.naver.com/book/catalog';
+            let checkingPivot = 'https://search.shopping.naver.com/book/catalog';
 
             if (!url.includes('.')) {
                 alert('URL 형식이 올바르지 않습니다.');
                 return false;
             }
 
-            if (!url.includes(chkUrl)) {
+            if (!url.includes(checkingPivot)) {
                 alert('네이버 책이 아닙니다. 다시 입력해주세요.');
                 return false;
             }
@@ -49,24 +49,13 @@
         }
 
         function copyBookUrl() {
-            const url = document.getElementById('copyUrl');
-            url.style.display = 'block';	        // 숨겨둔 input 태그 block처리
+            const url = document.getElementById('copyUrl').value;
+            // url.style.display = 'block';	        // 숨겨둔 input 태그 block처리
             url.select();	                    // 복사할 text 블럭
             document.execCommand('copy');	    // 드레그된 text 클립보드에 복사
-            url.style.display = 'none';	        // 다시 숨기기
+            // url.style.display = 'none';	        // 다시 숨기기
         }
 
-        function deleteBook() {
-            $.ajax({
-                type: "DELETE",
-                url: "/<int:param>",
-                data: {},
-                success: function (response) {
-                    alert(response['msg'])
-                    window.location.replace('/')
-                }
-            });
-        }
 
 
     </script>
@@ -140,23 +129,24 @@
     <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
 
         {% for book in books %}
-            {% set s = book['star'] | int %}
+            {#가독성 위해 s 변수선언 이동#}
             <div class="col">
                 <div class="card h-100">
                     <a href="/{{ book['bnum'] }}">
                         <img src="{{ book['image'] }}" class="card-img-top" height="350px">
 
-                    <div class="card-body">
-                        <h5 class="card-title">{{ book['title'] }}</h5>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ book['title'] }}</h5>
 
-                        {% for i in range(s) %}
-                            <span>⭐</span>
-                        {% endfor %}
+                            {% set s = book['star'] | int %}
+                            {% for i in range(s) %}
+                                <span>⭐</span>
+                            {% endfor %}
 
-                        <hr>
+                            <hr>
 
-                        <p class="card-text">{{ book['content'] }}</p>
-                    </div>
+                            <p class="card-text">{{ book['content'] }}</p>
+                        </div>
                     </a>
                 </div>
             </div>
